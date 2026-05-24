@@ -38,7 +38,7 @@ function Settlements() {
 
   useEffect(() => {
     fetchGroups();
-  }, []);
+  }, [fetchGroups]);
 
   const fetchSettlements = useCallback(async () => {
     if (!selectedGroup) return;
