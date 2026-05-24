@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "cd server && npm start",
+    "server": "cd server && npm start"
+  },
+  "dependencies": {
+    "razorpay": "^2.9.6"
+  }
+}

@@ -1,0 +1,27 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^powershell -Command \"\\$body = @\\{description='Test Equal Split Run'; amount=5000; paidBy='Alice'; splitAmong=@\\('Alice','Bob','Carol','Dave','Eve'\\); splitType='equal'; groupId='123'\\}; \\$json = \\$body \\| ConvertTo-Json -Depth 5; Write-Host '---POST RESPONSE---'; Invoke-RestMethod -Uri 'http://localhost:5000/api/expenses/add' -Method POST -ContentType 'application/json' -Body \\$json \\| ConvertTo-Json -Depth 5; Write-Host '---SETTLEMENTS---'; Invoke-RestMethod -Uri 'http://localhost:5000/api/expenses/settlements/123' -Method GET \\| ConvertTo-Json -Depth 5\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "npm run build": true,
+        "from": true,
+        "root": true,
+        "/^python tools\\\\write_dashboard_settlements\\.py$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cd \"c:\\\\Users\\\\nikitha\\\\OneDrive\\\\Desktop\\\\ExpensesSplitter\"; powershell -NoProfile -Command \"\\$files = @\\('client/src/pages/AddExpense\\.js','client/src/pages/CreateGroup\\.js','client/src/pages/ViewExpenses\\.js'\\); foreach \\(\\$file in \\$files\\) \\{ \\$path = Join-Path \\$PWD \\$file; \\(Get-Content -Raw -LiteralPath \\$path\\) -replace '\\^\u0000FEFF','' \\| Set-Content -LiteralPath \\$path -Encoding utf8 \\}\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^powershell -NoProfile -Command \"\\$files = @\\('client/src/pages/AddExpense\\.js','client/src/pages/CreateGroup\\.js','client/src/pages/ViewExpenses\\.js'\\); foreach \\(\\$file in \\$files\\) \\{ \\$path = Join-Path \\$PWD \\$file; \\(Get-Content -Raw -LiteralPath \\$path\\) -replace '\\^\u0000FEFF','' \\| Set-Content -LiteralPath \\$path -Encoding utf8 \\}\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^powershell -NoProfile -Command \"\\(Get-Content -Raw -LiteralPath 'client/src/pages/AddExpense\\.js'\\) -replace '\\^\u0000FEFF','' \\| Set-Content -LiteralPath 'client/src/pages/AddExpense\\.js' -Encoding utf8; \\(Get-Content -Raw -LiteralPath 'client/src/pages/CreateGroup\\.js'\\) -replace '\\^\u0000FEFF','' \\| Set-Content -LiteralPath 'client/src/pages/CreateGroup\\.js' -Encoding utf8; \\(Get-Content -Raw -LiteralPath 'client/src/pages/ViewExpenses\\.js'\\) -replace '\\^\u0000FEFF','' \\| Set-Content -LiteralPath 'client/src/pages/ViewExpenses\\.js' -Encoding utf8\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

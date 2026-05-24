@@ -1,0 +1,27 @@
+import api from '../../api/api';
+
+export const fetchAdminSummary = () => api.get('/admin/summary');
+export const fetchAdminReports = () => api.get('/admin/reports');
+export const fetchAdminUsers = (params = {}) => api.get('/admin/users', { params });
+export const updateAdminUser = (id, payload) => api.put(`/admin/users/${id}`, payload);
+export const deleteAdminUser = (id) => api.delete(`/admin/users/${id}`);
+export const deleteAdminExpense = (id) => api.delete(`/admin/expenses/${id}`);
+export const fetchAdminGroups = (params = {}) => api.get('/admin/groups', { params });
+export const fetchAdminGroup = (id) => api.get(`/admin/groups/${id}`);
+export const deleteAdminGroup = (id) => api.delete(`/admin/groups/${id}`);
+export const fetchAdminExpenses = (params = {}) => api.get('/admin/expenses', { params });
+export const fetchAdminSettlements = (params = {}) => api.get('/admin/settlements', { params });
+export const fetchAdminNotifications = () => api.get('/admin/notifications');
+export const createAdminNotification = (payload) => api.post('/admin/notifications', payload);
+export const updateAdminNotification = (id, payload) => api.patch(`/admin/notifications/${id}`, payload);
+export const deleteAdminNotification = (id) => api.delete(`/admin/notifications/${id}`);
+export const fetchAdminSettings = () => api.get('/admin/settings');
+export const saveAdminSettings = (payload) => api.put('/admin/settings', payload);
+export const backupAdminDatabase = () => api.get('/admin/backup', { responseType: 'blob' });
+export const markNotificationRead = (id) => api.put(`/admin/notifications/read/${id}`);
+export const markAllNotificationsRead = () => api.put(`/admin/notifications/read-all`);
+export const fetchAdminFeedback = (params = {}) => api.get('/feedback', { params });
+export const replyAdminFeedback = (payload) => api.post('/feedback/reply', payload);
+export const updateAdminFeedbackStatus = (id, payload) => api.patch(`/feedback/status/${id}`, payload);
+export const deleteAdminFeedback = (id) => api.delete(`/feedback/${id}`);
+export const fetchAdminActivityLogs = () => api.get('/admin/activity-logs');
