@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../api/api';
 import Navbar from '../components/Navbar';
 import PremiumCard from '../components/PremiumCard';
 import StatsCard from '../components/StatsCard';
@@ -43,7 +43,7 @@ function AddExpense() {
 
   const fetchGroups = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/groups');
+      const res = await api.get('/groups');
       const groupsData = res.data || [];
       setGroups(groupsData);
       if (groupsData.length > 0) {
@@ -150,7 +150,7 @@ function AddExpense() {
         splits
       };
 
-      const response = await axios.post('http://localhost:5000/api/expenses/add', submitData);
+      const response = await api.post('/expenses/add', submitData);
       if (response?.data?.success === true) {
         setToast({ message: 'Expenses added', type: 'success' });
         setError('');
@@ -177,7 +177,7 @@ function AddExpense() {
   const handleClearAllGroupData = async () => {
     try {
       setClearingAllData(true);
-      const res = await axios.delete('http://localhost:5000/api/groups/admin/clear-all');
+      const res = await api.delete('/groups/admin/clear-all');
       if (res.data.success) {
         setGroups([]);
         setSelectedGroup('');

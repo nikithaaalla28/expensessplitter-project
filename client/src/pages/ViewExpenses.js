@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../api/api';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
@@ -12,7 +12,7 @@ function ViewExpenses() {
     if (!groupId) return;
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:5000/api/expenses/${groupId}`);
+      const res = await api.get(`/expenses/${groupId}`);
       setExpenses(res.data || []);
     } catch (error) {
       console.error(error);

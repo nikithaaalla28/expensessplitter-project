@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api/api';
 import Navbar from '../components/Navbar';
 import PremiumCard from '../components/PremiumCard';
 import StatsCard from '../components/StatsCard';
@@ -29,7 +29,7 @@ function CreateGroup() {
     };
 
     try {
-      await axios.post('http://localhost:5000/api/groups/create', groupData);
+      await api.post('/groups/create', groupData);
       setFeedback('Group created successfully. Redirecting to dashboard...');
       setError('');
       setTimeout(() => navigate('/dashboard'), 900);

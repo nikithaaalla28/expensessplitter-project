@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api/api';
 import MainNavbar from '../components/MainNavbar';
 import PremiumCard from '../components/PremiumCard';
 import StatsCard from '../components/StatsCard';
@@ -37,7 +37,7 @@ function Dashboard() {
   const fetchGroups = async () => {
     try {
       setLoading(true);
-      const res = await axios.get('http://localhost:5000/api/groups');
+      const res = await api.get('/groups');
       const groupsData = res.data || [];
       setGroups(groupsData);
       if (groupsData.length > 0) {
@@ -52,7 +52,7 @@ function Dashboard() {
 
   const fetchExpenses = async (groupId) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/expenses/${groupId}`);
+      const res = await api.get(`/expenses/${groupId}`);
       setExpenses(res.data || []);
     } catch (error) {
       console.error(error);
@@ -61,7 +61,7 @@ function Dashboard() {
 
   const fetchSettlements = async (groupId) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/expenses/settlements/${groupId}`);
+      const res = await api.get(`/expenses/settlements/${groupId}`);
       setSettlements(res.data || []);
     } catch (error) {
       console.error(error);
@@ -74,7 +74,7 @@ function Dashboard() {
 
     try {
       setClearing(true);
-      await axios.delete(`http://localhost:5000/api/expenses/clear/${selectedGroup._id}`);
+      await api.delete(`/expenses/clear/${selectedGroup._id}`);
       await fetchExpenses(selectedGroup._id);
       await fetchSettlements(selectedGroup._id);
       setToast({ message: 'Group data cleared successfully.', type: 'success' });
@@ -89,7 +89,7 @@ function Dashboard() {
   const handleClearAllGroupData = async () => {
     try {
       setClearingAllData(true);
-      const res = await axios.delete('http://localhost:5000/api/groups/admin/clear-all');
+      const res = await api.delete('/groups/admin/clear-all');
 
       if (res.data.success) {
         setGroups([]);
