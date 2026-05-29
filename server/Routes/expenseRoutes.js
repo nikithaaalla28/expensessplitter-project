@@ -551,6 +551,21 @@ router.delete("/clear/:groupId", async (req, res) => {
   }
 });
 
+// Get all expenses across all groups
+router.get("", async (req, res) => {
+  try {
+    console.log('DEBUG: hit GET /api/expenses root route');
+    const expenses = await Expense.find();
+    res.json(expenses);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "Error fetching expenses",
+    });
+  }
+});
+
 // Get expenses for a group
 router.get("/:groupId", async (req, res) => {
   try {

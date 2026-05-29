@@ -1,9 +1,13 @@
 {
   "scripts": {
-    "start": "cd server && npm start",
-    "server": "cd server && npm start"
+    "start": "npx concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm start",
+    "client": "cd client && npm start"
   },
   "dependencies": {
     "razorpay": "^2.9.6"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }
